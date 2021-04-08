@@ -23,13 +23,15 @@ right: 0;
 -webkit-transform: translateY(-50%);
 transform: translateY(-50%);
 }
-
+hr.new3 {
+  border-top: 1px dotted #888888;
+}
 body {
 font-family: 'Cabin', sans-serif;
 background-color: #d9d9d9;
-background-image: url('https://images.getbento.com/accounts/f4d66206fdf37d089dc50ee37f8dfbc9/mediausers/custom_fields_galleries/images/vGhAwAi0Qp6jVKVYOG37_95721Michael_Zaro_-_bw_101006_Zaro_Production_061.jpg');
-background-repeat: no-repeat;
-background-size: cover;
+background-image: url('https://i.pinimg.com/originals/82/02/e1/8202e125746516dfbe14bd428f2d4e0b.jpg');
+ background-size: cover;
+  background-position: center;
 
 }
 
@@ -57,7 +59,7 @@ left: 0px;
 top: 0px;
 bottom: 0px;
 width: 250px;
-background-image: url('https://images7.alphacoders.com/349/349766.jpg');
+background-image: url('https://images.getbento.com/accounts/6b402d952a0be4cac4a4260bfb27ba51/mediausers/custom_fields_galleries/images/qQ47RVRvSg6Wn3jDzc8E_Caffe%20Marchio%20October%202018%20Peter%20Garritano%20(9).jpg');
 background-size: cover;
 background-position: center;
 }
@@ -226,8 +228,8 @@ h1.b {
   font-family: "Sofia", sans-serif;
 }
  .myDiv {
-  border: 5px outset #471f16;
-  background-color: #fdebd0 ;    
+  border: 5px outset #fc4647;
+  background-color: #f2f2f2 ;    
   box-shadow: 5px 10px 8px #888888;
   text-align: center;
 }
@@ -240,12 +242,15 @@ h1.b {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
 </head>
 <body>
-<div styles ="background-image: url('https://images.getbento.com/accounts/f4d66206fdf37d089dc50ee37f8dfbc9/mediausers/custom_fields_galleries/images/vGhAwAi0Qp6jVKVYOG37_95721Michael_Zaro_-_bw_101006_Zaro_Production_061.jpg');"> 
+<div styles ="background-image: url('https://i.pinimg.com/originals/82/02/e1/8202e125746516dfbe14bd428f2d4e0b.jpg"> 
 
     <div class="myDiv">
+  
+    
             <div class="claim"><h1 class="b"> The Bakery Shop</h1>
 
-           <!-- <img src="MyAssets/bakerylog.jpeg" height="200" > -->
+           <img src="MyAssets/Bakerylogo.jpg" height="200" > 
+         
       </div>     
             </div>
         </div>

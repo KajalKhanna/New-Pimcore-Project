@@ -16,6 +16,8 @@ Fields Summary:
 - manufacturedOn [date]
 - expiry [date]
 - productType [objectbricks]
+- nutritionalValue [quantityValue]
+- calories [quantityValue]
 */ 
 
 
@@ -24,7 +26,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1617606701,
+   'modificationDate' => 1617882084,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -279,6 +281,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 'key' => 'Cookie',
                 'value' => 'Cookie',
               ),
+              2 => 
+              array (
+                'key' => 'Muffin',
+                'value' => 'Muffin',
+              ),
             ),
              'width' => '',
              'defaultValue' => '',
@@ -361,6 +368,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
               0 => 'CookiePack',
               1 => 'Flavour',
+              2 => 'MuffinPack',
             ),
              'maxItems' => '',
              'border' => false,
@@ -378,6 +386,86 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
+          )),
+          10 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
+             'width' => NULL,
+             'unitWidth' => NULL,
+             'defaultValue' => NULL,
+             'defaultUnit' => NULL,
+             'validUnits' => 
+            array (
+              0 => 'gm',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'queryColumnType' => 
+            array (
+              'value' => 'double',
+              'unit' => 'varchar(50)',
+            ),
+             'columnType' => 
+            array (
+              'value' => 'double',
+              'unit' => 'varchar(50)',
+            ),
+             'phpdocType' => '\\Pimcore\\Model\\DataObject\\Data\\QuantityValue',
+             'name' => 'nutritionalValue',
+             'title' => 'Nutritional Value',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'defaultValueGenerator' => '',
+          )),
+          11 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
+             'width' => NULL,
+             'unitWidth' => NULL,
+             'defaultValue' => NULL,
+             'defaultUnit' => NULL,
+             'validUnits' => 
+            array (
+              0 => 'cal',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'queryColumnType' => 
+            array (
+              'value' => 'double',
+              'unit' => 'varchar(50)',
+            ),
+             'columnType' => 
+            array (
+              'value' => 'double',
+              'unit' => 'varchar(50)',
+            ),
+             'phpdocType' => '\\Pimcore\\Model\\DataObject\\Data\\QuantityValue',
+             'name' => 'calories',
+             'title' => 'Calories',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'defaultValueGenerator' => '',
           )),
         ),
          'locked' => false,

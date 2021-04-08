@@ -10,6 +10,7 @@ use Pimcore\Model\Asset;
 
 use Pimcore\Model\Document;
 
+
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -39,7 +40,7 @@ class ProductCommand extends AbstractCommand
         $object = new \Pimcore\Model\DataObject\Import\Listing();
         $object->setCondition('name = ?', 'Product');
         // $object->addConditionParam('status = ?', false);
-        $object->setLimit(2);
+        $object->setLimit(5);
 
         foreach ($object as $path) {
             $file = $path->getFile();
@@ -117,14 +118,71 @@ class ProductCommand extends AbstractCommand
                 	
        	     // $obj->save();
                     $object->save();
-
-                    $msg = "Data Imported Successfully.\n";
+                    if(($prod->sku)==NULL )
+                    {
+                     $msg ="SKU  is given NULL.\n";
+                     $this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->name)==NULL )
+                    {
+                     $msg ="name  is given NULL.\n";
+                     $this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->description)==NULL )
+                    {
+                     $msg ="description is given NULL.\n";
+                     $this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->price)==NULL )
+                    {
+                     $msg ="price  is given NULL.\n";
+                     $this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->weight)==NULL )
+                    {
+                     $msg ="weight is given NULL.\n";
+                     $this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->image)==NULL )
+                    {
+                     $msg ="image  is given NULL.\n";
+                     $this->dump('Something Went Wrong');
+                    }
+                    else
                    
+                   $this->dump('Data Imported Successfully');
+                    $count++;
+                    $logMsg=new \Pimcore\Model\DataObject\Log();        
+                    $logMsg->setKey("$prod->key");
+                    $logMsg->setPublished(true);
+                    $logMsg->setParentId(33);
+                    $logMsg->setMessage($msg);
+                    $logMsg->save();
+
+                    $log=new \Pimcore\Model\DataObject\Import\Listing();
+                    foreach($log as $prod)
+                    {                    
+                     //   $prod->setLog($msg);
+                        $prod->setStatus(true);
+                        $prod->save();
+                    }
+                   
+
+                    
+
+                    //$msg = "Data Imported Successfully.\n";
+
+                    $mail = new \Pimcore\Mail();
+                    $mail->addTo('kajalkhanna803@gmail.com');
+                    $mail->setSubject('Products Imported Sucessfully');
+                    $mail->setDocument('/importEmail');
+                    // $mail->setParams($params);
+                    $mail->send();
                   
                 }
 
 
-                $this->dump('Data Imported Successfully');
+                
             }
         }
     }

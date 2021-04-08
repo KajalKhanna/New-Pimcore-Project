@@ -20,7 +20,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #383434 ;
+  background-color: #63240a ;
   box-shadow: 5px 10px 8px #888888;
   
 }
@@ -38,7 +38,7 @@ li a {
 }
 
 li a:hover {
-  background-color: #471f16;
+  background-color: #fc4647;
 }
 
 
@@ -59,7 +59,9 @@ li a:hover {
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 
-<ul><li><a href=" http://project.local/Home">Home</a></li>
+<ul><li><a href=" http://bakery.local/Home">Home</a></li>
+<li><a href="http://bakery.local/productList">Products </a></li>
+<li><a href="http://bakery.local/feedback">Feedback </a></li>
 
 </ul>
 
