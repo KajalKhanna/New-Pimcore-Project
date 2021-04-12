@@ -72,14 +72,17 @@ class ProductCommand extends AbstractCommand
         }
         $data = json_decode($json);
         foreach ($data as $prod) {
+       
+
         
 
                 if ($prod->sku != NULL) {
+                    try{
                    
                     $object = new Pimcore\Model\DataObject\Product();
                   
                     $object->setKey($prod->key);
-                    $object->setParentId(6);
+                    $object->setParentId(138);
                     $object->setPublished(true);
 		     $image = \Pimcore\Model\Asset\Image::getByPath($prod->image);
 		  
@@ -89,6 +92,8 @@ class ProductCommand extends AbstractCommand
             
                     $object->setPrice(new DataObject\Data\QuantityValue($prod->price,$prod->Rs));
                      $object->setWeight(new DataObject\Data\QuantityValue($prod->weight,$prod->kg));
+                     $object->setCalories(new DataObject\Data\QuantityValue($prod->calories,$prod->cal));
+                     $object->setNutritionalValue(new DataObject\Data\QuantityValue($prod->nutritionalValue,$prod->gm));
        	     $object->setImage($image);
        	    
        	       $objBrick = new DataObject\Objectbrick\Data\CookiePack($object); 
@@ -98,6 +103,11 @@ class ProductCommand extends AbstractCommand
        	       $objBrick2 = new DataObject\Objectbrick\Data\Flavour($object); 
        	       $objBrick2->setFlavour($prod->flavour);
        	       $object->getProductType()->setFlavour($objBrick2);
+
+               $objBrick3 = new DataObject\Objectbrick\Data\MuffinPack($object); 
+       	       $objBrick3->setMuffinPackOf($prod->muffinPackOf);
+       	       $object->getProductType()->setMuffinPack($objBrick3); 
+                  $object->setContainsEgg($prod->containsEgg);  
        	      
        	      
        	              
@@ -121,36 +131,104 @@ class ProductCommand extends AbstractCommand
                     if(($prod->sku)==NULL )
                     {
                      $msg ="SKU  is given NULL.\n";
-                     $this->dump('Something Went Wrong');
+                    // $this->dump('Something Went Wrong');
                     }
                     elseif(($prod->name)==NULL )
                     {
                      $msg ="name  is given NULL.\n";
-                     $this->dump('Something Went Wrong');
+                    // $this->dump('Something Went Wrong');
                     }
                     elseif(($prod->description)==NULL )
                     {
                      $msg ="description is given NULL.\n";
-                     $this->dump('Something Went Wrong');
+                    // $this->dump('Something Went Wrong');
                     }
                     elseif(($prod->price)==NULL )
                     {
                      $msg ="price  is given NULL.\n";
-                     $this->dump('Something Went Wrong');
+                    // $this->dump('Something Went Wrong');
                     }
                     elseif(($prod->weight)==NULL )
                     {
                      $msg ="weight is given NULL.\n";
-                     $this->dump('Something Went Wrong');
+                     //$this->dump('Something Went Wrong');
                     }
                     elseif(($prod->image)==NULL )
                     {
                      $msg ="image  is given NULL.\n";
-                     $this->dump('Something Went Wrong');
+                     //$this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->nutritionalValue)==NULL )
+                    {
+                     $msg ="Nutritional Value is given NULL.\n";
+                     //$this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->calories)==NULL )
+                    {
+                     $msg ="calories is given NULL.\n";
+                     //$//this->dump('Something Went Wrong');
                     }
                     else
-                   
+                 
                    $this->dump('Data Imported Successfully');
+                }  
+                catch (\Exception $e)
+                {
+                    if(($prod->sku)==NULL )
+                    {
+                     $msg ="SKU  is given NULL.\n";
+                     //$this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->name)==NULL )
+                    {
+                     $msg ="name  is given NULL.\n";
+                     //$this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->description)==NULL )
+                    {
+                     $msg ="description is given NULL.\n";
+                     //$this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->price)==NULL )
+                    {
+                     $msg ="price  is given NULL.\n";
+                     //$this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->weight)==NULL )
+                    {
+                     $msg ="weight is given NULL.\n";
+                     //$this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->image)==NULL )
+                    {
+                     $msg ="image  is given NULL.\n";
+                     //$this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->nutritionalValue)==NULL )
+                    {
+                     $msg ="Nutritional Value is given NULL.\n";
+                    // $this->dump('Something Went Wrong');
+                    }
+                    elseif(($prod->calories)==NULL )
+                    {
+                     $msg ="calories is given NULL.\n";
+                     //$this->dump('Something Went Wrong');
+                    }
+                    
+                 
+                   
+                  
+                    $this->dump('exption blocked');
+                   
+                    $logMsg=new \Pimcore\Model\DataObject\Log();        
+                    $logMsg->setKey("$prod->key");
+                    $logMsg->setPublished(true);
+                    $logMsg->setParentId(33);
+                    $logMsg->setMessage($msg);
+                    $logMsg->save();
+                    continue;
+                }
+                $msg ="sucessfully";
                     $count++;
                     $logMsg=new \Pimcore\Model\DataObject\Log();        
                     $logMsg->setKey("$prod->key");
@@ -173,8 +251,8 @@ class ProductCommand extends AbstractCommand
                     //$msg = "Data Imported Successfully.\n";
 
                     $mail = new \Pimcore\Mail();
-                    $mail->addTo('kajalkhanna803@gmail.com');
-                    $mail->setSubject('Products Imported Sucessfully');
+                    //$mail->addTo('raj116347@gmail.com');
+                    //$mail->setSubject('Products Imported Sucessfully');
                     $mail->setDocument('/importEmail');
                     // $mail->setParams($params);
                     $mail->send();
@@ -183,7 +261,8 @@ class ProductCommand extends AbstractCommand
 
 
                 
-            }
         }
     }
+}
+      
 

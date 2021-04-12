@@ -1,0 +1,3 @@
+key,sku,name,description,price,Rs,weight,kg,image,packOf,flavour,muffinPackOf,categoryType,manufacturedOn,expiry
+Choco Chip Cookies 6,1011111,hello,A chocolate chip cookie is a drop cookie that features chocolate chips or chocolate morsels as its distinguishing ingredient. Chocolate chip cookies originated in the United States around 1938,200,Rs,0.5,kg,/MyAssets/ChocoChipCookies.jpeg,Pack of 4,Chocolate,,Cookie,01-04-2021,01-05-2021
+Choco Chip Cookies 7,1020,hello,a great,500,Rs,0.8,kg,/MyAssets/ChocoChipCookies.jpeg,Pack of 6,Chocolate,pack of 6,Muffin,01-04-2021,01-05-2021

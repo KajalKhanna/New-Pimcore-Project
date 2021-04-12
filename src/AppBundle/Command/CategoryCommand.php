@@ -97,7 +97,7 @@ class CategoryCommand extends AbstractCommand
                    
                   
                     $mail = new \Pimcore\Mail();
-                    $mail->addTo('kajalkhanna803@gmail.com');
+                    $mail->addTo('raj116347@gmail.com');
                     $mail->setSubject('Category Imported Sucessfully');
                     $mail->setDocument('/importCategoryEmail');
                     // $mail->setParams($params);

@@ -12,6 +12,7 @@ $this->extend('layout.html.php');
     <link rel="stylesheet" type="text/css" href="/static/css/global.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
     
 <style>
 *, *:before, *:after {
@@ -24,11 +25,12 @@ body {
   background-image: url('https://wallpapercave.com/wp/wp2004032.jpg');
   background-size: cover;
   background-position: center;
+   font-family: "Sofia";
   font-size: 12px;
 }
 
 body, button, input {
-  font-family: 'Montserrat', sans-serif;
+  
   font-weight: 700;
   letter-spacing: 1.4px;
 }
@@ -39,7 +41,7 @@ body, button, input {
 }
 
 .container {
-  flex: 0 1 700px;
+  flex: 0 1 900px;
   margin: auto;
   padding: 40px;
 }
@@ -48,6 +50,8 @@ body, button, input {
   position: relative;
   background: #de9031;
   border-radius: 15px;
+  height: 500px;
+  width: 900px;
 }
 
 .screen:after {
@@ -67,7 +71,7 @@ body, button, input {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background: #63240a;
+  background: #56301d;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -116,6 +120,7 @@ body, button, input {
 .screen-body-item {
   flex: 1;
   padding: 50px;
+  color: #56301d;
 }
 
 .screen-body-item.left {
@@ -145,7 +150,7 @@ body, button, input {
 .app-contact {
   margin-top: auto;
   font-size: 8px;
-  color: #888;
+  color: black;
 }
 
 .app-form-group {
@@ -167,15 +172,16 @@ body, button, input {
   background: none;
   border: none;
   border-bottom: 1px solid #666;
-  color: #ddd;
+  color: #56301d;
   font-size: 14px;
   text-transform: uppercase;
   outline: none;
   transition: border-color .2s;
+  color: #56301d;
 }
 
 .app-form-control::placeholder {
-  color: #666;
+  color: #56301d;
 }
 
 .app-form-control:focus {
@@ -331,8 +337,8 @@ body, button, input {
 
 
                 $mail = new \Pimcore\Mail();
-                $mail->addTo('kajalkhanna803@gmail.com');
-                $mail->setSubject('Products Feedback');
+                // $mail->addTo('kajalkhanna803@gmail.com');
+                // $mail->setSubject('Products Feedback');
                 $mail->setDocument('/feedbackEmail');
                 // $mail->setParams($params);
                 $mail->send();
@@ -353,5 +359,4 @@ body, button, input {
         <h2><?= $this->input("subline"); ?></h2>
         <?= $this->wysiwyg("content"); ?>
     <?php } ?>
-
 

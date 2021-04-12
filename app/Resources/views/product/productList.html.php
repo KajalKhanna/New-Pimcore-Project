@@ -10,7 +10,20 @@ echo $this->ta;
 $this->extend('layout.html.php');
 
 ?>
-<head> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Kajal Khanna">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Bootstrap Datatable </title>
+       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <style>
 *, *:before, *:after {
   box-sizing: border-box;
@@ -19,17 +32,16 @@ $this->extend('layout.html.php');
 }
 
 body {
-  background-image: url('https://i.pinimg.com/originals/82/02/e1/8202e125746516dfbe14bd428f2d4e0b.jpg');
+ 
   background-size: cover;
   background-position: center;
   font-size: 12px;
+  font-family: "Sofia";
+  color: black;
+ 
 }
 
-body, button, input {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-}
+
 
 .background {
   display: flex;
@@ -37,14 +49,14 @@ body, button, input {
 }
 
 .container {
-  flex: 0 1 700px;
+  flex: 0 1 1500px;
   margin: auto;
   padding: 10px;
 }
 
 .screen {
   position: relative;
-  background: #cac3b2;
+  background: #eae6e2;
   border-radius: 15px;
 }
 
@@ -65,7 +77,7 @@ body, button, input {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background: #fc4647 ;
+  background: #56301d ;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -251,7 +263,7 @@ body, button, input {
 }
 * {
   box-sizing: border-box;
-  
+ 
      background-repeat: no-repeat;
    background-attachment: fixed;
   background-size: 100% 100%;
@@ -259,7 +271,7 @@ body, button, input {
 table {
   border-collapse: collapse;
   width: 100%;
-} 
+}
 
 
 
@@ -275,7 +287,7 @@ th,td {
 }
 
 th {
-  background-color: #4d4d4f;
+  background-color: #56301d;
   color: white;
   cursor: pointer;
 }
@@ -308,7 +320,7 @@ p {
 
 </style>
 </head>
-
+<body class="bg-info">
 <?= $this->wysiwyg("specialContent"); ?>
      
 <div class="background">
@@ -320,61 +332,43 @@ p {
         </div>
  
     <div class="screen">
-    
+   
 <div class="product-info">
-    <?php 
+    <?php
     if($this->editmode):
        
     else: ?>
 
-    <div id="product">
-    
-        
-         <?php
-          $pageLimit = 8;
-
-          if (isset($_GET["page"])) {
-            $page  = $_GET["page"];    
-          }    
-          else {
-            $page = 1;    
-          } 
-          $offset = ($page-1) * $pageLimit; 
-  
-        $prod = new \Pimcore\Model\DataObject\Product\Listing();
-
-        $products = count($prod);
-        $prod->setLimit($pageLimit);
-        if($offset > 0){
-          $prod->setOffset($offset);
-        }
-        else{
-          $prod->setOffset(0);
-        }
-        ?>
-        <table class="d">
-            <tr>
-            	 <th  >SKU</th>
-                <th  >Name</th>
+   <div class="container">
+  <div class="row  justify-content-center">
+  <div class="col-lg-10 bg-light rounded my-2 py-2">
+  <h4 class="text-center text-dark pt-2">Product Listing</h4><hr>
+   <table class="table table-bordered table-striped table-hover">
+     
+           <thead>   <tr>
+           
+            <th>SKU</th>
+                <th>Name</th>
                 <th  >Weight</th>
                 <th  >Price</th>
                 <th  >Nutrition</th>
                 <th  >Calorie Content</th>
-                <th  >Category</th>
-                
+                <th >Category</th>
+               
                 <th  >Image</th>
-                
-            </tr>            
-        </table>
-        
+               
+            </tr>    </thead>          
+   
+       
  <div class="screen-body">
-       <table class="d">
-       <tbody>
+   
+      <tbody>
+  <?php $prod = new \Pimcore\Model\DataObject\Product\Listing(); ?>
        <?php
-        foreach($prod as $product) 
+        foreach($prod as $product)
         {
             ?>
-            
+           
             <tr >
             <td ><?=$product->getSku(); ?></td>
             <td ><?=$product->getName(); ?></td>
@@ -384,7 +378,7 @@ p {
              <td ><?=$product->getCalories(); ?></td>
               <td><?=$product->getCategoryType(); ?></td>
            
-            
+           
             <?php
 
 
@@ -395,47 +389,37 @@ p {
             ?>
 
          <td><?= $picture->getThumbnail()->getHtml(["width" => 100,"height" => 100])?> </td>
-            
+           
            
             <?php endif;
-            
+           
             ?>
-            
+           
             </tr>
         <?php
-     } 
+     }
      ?>  
        </tbody>          
         </table></div></div>
-    </div> </div>
-    <?php endif; ?>
- <div class="pagination" >    
-      <?php
-      if(!$this->editmode) {
-        echo "</br>";     
-        $pageCount = ceil($products / $pageLimit);     
-        $gotoPage = "";       
-      
-        if($page >= 2){   
-            echo "<a href='http://bakery.local/productList?page=".($page-1)."'>  Prev </a>";   
-        }       
-                    
-        for ($i = 1; $i <= $pageCount; $i++) {
-              
-          if ($i == $page) {   
-              $gotoPage .= "<a class = 'active' href='http://bakery.local/productList?page=".$i."'>".$i." </a>";   
-          }         
-          else  {   
-              $gotoPage .= "<a href='http://bakery.local/productList?page=".$i."'>".$i." </a>";     
-          }   
-        };     
-        echo $gotoPage;
-            
-        if($page<$pageCount){   
-            echo "<a href='http://bakery.local/productList?page=".($page+1)."'>  Next </a>";   
-        }
-      }
-      ?>    
-      </div>
+    </div> </div>  </div>
+    </div>
+    </div>
+   <!-- <?php endif; ?> -->
+ 
 </div>
 </div>
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+$('table').DataTable();
+
+
+} );
+
+</script>
+  </body>
+ 
+  </html>
+
+ 
