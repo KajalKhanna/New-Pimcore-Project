@@ -72,7 +72,9 @@ h4 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: #f2f2f2; 
+  margin-top: 200px;
+  /* opacity: 0.2; */
 }
 .slideshow-container {
   max-width: 1000px;
@@ -195,6 +197,11 @@ function showSlides() {
   setTimeout(showSlides, 4000); 
 }
 </script>
+<br/>
+</br/>
+
+
+
 <div class="product-info">
     
     <div id="product">
@@ -228,7 +235,7 @@ function showSlides() {
 
 					    /** @var \Pimcore\Model\Asset\Image $Image */
 					    ?>
-					    <?= $picture->getThumbnail()->getHtml(["width" => 300,"height" => 300])?> 
+					    <?= $picture->getThumbnail()->getHtml(["width" =>400,"height" => 300])?> 
 					    </div>
                  
                       				  <a href="#"><?=$product->getName(); ?></a>
